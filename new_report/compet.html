@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Digital Budget — инструмент, который позволяет быстро создать качественный конкурентный анализ с учетом всех digital-каналов">
+    <meta name="author" content="Александр Степанов">
+    <title>DigitalBudget — аналитика затрат на рекламу в digital</title>
+
+    
+<!-- LOCAL    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/roboto.css">
+    <link rel="stylesheet" href="./css/fa.css">
+-->
+<!-- GLOBAL -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<!---->
+    <link rel="stylesheet" href="./css/report.css">
+
+</head>
+
+<body>
+    <section id="page-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>
+                        <span id="span-title"></span>
+                    </h5>
+                </div>
+                <div class="col-md-3">
+                        <span id="span-export"></span>
+                </div>                
+                <div class="col-md-3 colorset"><p><span id="p-colorset"></span><b><span id="span-colorset"></span></b></p></div>
+            </div>
+            <div class="row" id="datepicker">
+            </div>
+        </div>
+    </section>
+    <section id="common">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <canvas id="main-top"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h6>Затраты, руб.</h6>
+        <div class="container">
+            <div class="row">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Сайт</th>
+                            <th scope="col">Суммарно</th>
+                            <th scope="col">Десктоп</th>
+                            <th scope="col">Мобайл</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-sites-budget">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <canvas id="budget-doughnut"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <canvas id="tools-budget-by-sites"></canvas>
+                    <input id="tools-budget-by-sites-checkbox" type="checkbox" data-toggle="toggle" data-on="Показать в значениях" data-off="Показать в долях (%)" data-size="small" data-onstyle="info" data-offstyle="info">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <canvas id="tools-budget-dynamics"></canvas>
+                    <input id="tools-budget-dynamics-checkbox" type="checkbox" data-toggle="toggle" data-on="Показать в значениях" data-off="Показать в долях (%)" data-size="small" data-onstyle="info" data-offstyle="info">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <canvas id="traffic-top"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <h6>Трафик</h6>
+        <div class="container">
+            <div class="row">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Сайт</th>
+                            <th scope="col">Суммарно</th>
+                            <th scope="col">Десктоп</th>
+                            <th scope="col">Мобайл</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-sites-traffic">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <canvas id="traffic-doughnut"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <canvas id="tools-traffic-by-sites"></canvas>
+                    <input id="tools-traffic-by-sites-checkbox" type="checkbox" data-toggle="toggle" data-on="Показать в значениях" data-off="Показать в долях (%)" data-size="small" data-onstyle="info" data-offstyle="info">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <canvas id="tools-traffic-dynamics"></canvas>
+                    <input id="tools-traffic-dynamics-checkbox" type="checkbox" data-toggle="toggle" data-on="Показать в значениях" data-off="Показать в долях (%)" data-size="small" data-onstyle="info" data-offstyle="info">
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+<!--
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/Chart.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+-->
+    <script src="./js/compet.js"></script>
+    <script src="./js/stacked100.js"></script>
+    <script type="text/javascript">
+        var data = [
+            { 
+                "id": 794, 
+                "key": "instamart.ru" 
+            }, 
+            { 
+                "id": 1603, 
+                "key": "oblaka-dv.ru" 
+            }, 
+            { 
+                "id": 468, 
+                "key": "bestcon.ru" 
+            }, 
+            { 
+                "id": 916, 
+                "key": "oscillo.ru" 
+            }, 
+            { 
+                "id": 1604, 
+                "key": "zkvartal5.ru" 
+            } 
+        ];
+        $(document).ready(function() {
+            setData();
+            Datepicker.init("#datepicker", data.months);
+        });
+
+    </script>
+</body>
+
+</html>
